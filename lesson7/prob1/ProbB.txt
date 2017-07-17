@@ -1,0 +1,12 @@
+Wrongly implemented equals method. 
+
+correction. change implementation as shown below
+FROM-----	public boolean equals(Employee e) {
+				return e.name.equals(name) && e.salary == salary;
+			}
+			
+			
+To------- 	public boolean equals(Object em) {
+				Employee e = (Employee)em;
+				return e.name.equals(name) && e.salary == salary;
+			}

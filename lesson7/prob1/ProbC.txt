@@ -1,0 +1,12 @@
+Unimplemented hashCode method. It does not override the .hashCode method of the Object
+class
+
+correction. implement as shown below
+	@Override
+	public int hashCode() {
+		int result = 17;
+		int salHash = Integer.valueOf(salary).hashCode();
+		result += 31 * result + name.hashCode();
+		result += 31 * result + salHash;
+		return result;
+	}

@@ -1,0 +1,21 @@
+Overriden hashCode method has an extra attribute visited which is not in the original objects added to the HashMap.
+Therefore the hashCode for this attribute is different to the one after set visited to true
+
+correction. Ommit the visited attribute in both the .equals and .hashCode methods when overriding
+	@Override
+	public boolean equals(Object ob) {
+		if(ob == null) return false;
+		if(!(ob instanceof Employee)) return false;
+		Employee emp = (Employee)ob;
+		return emp.name.equals(name) && emp.salary == salary;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = 17;
+		long longval = Double.doubleToLongBits(salary);
+		int salaryHash = (int) (longval ^ (longval >>> 32));
+		result += 31 * result + name.hashCode();
+		result += 31 * result + salaryHash;
+		return result;
+	}
